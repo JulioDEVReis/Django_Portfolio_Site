@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+    <div class="container"><a class="navbar-brand" href="#page-top">Julio {d3v} reis</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#blog">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="text-center text-white bg-primary masthead">
+    <div class="container"><img class="img-fluid d-block mx-auto mb-5" src="{% static 'assets/img/foto%20perfil.png' %}" style="width: 600px;">
+        <h1>Julio Reis</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">Full Stack - Desenvolvedor Python<br>Sites e Apps responsivos</h2>
+    </div>
+</header>
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-secondary">Portfolio</h2>
+        <hr class="star-dark mb-5">
+        <div class="container">
+            <div class="row">
+                {% for projeto in projetos %}
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100"><a href="{% url 'portfolio' projeto.id %}"><img class="img-fluid" src="{{ projeto.imagem.url }}" alt="{{ projeto.nome }}"></a>
+                        <div class="card-body">
+                            <h4 class="card-title">{{ projeto.nome }}</h4>
+                            <h6 class="text-muted card-subtitle mb-2">{{ projeto.subtitulo }}</h6>
+                            <a class="card-link" href="{% url 'portfolio' projeto.id %}">Veja o projeto...</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="text-white bg-primary mb-0" id="about">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-white">SOBRE MIM</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+            <div class="col-lg-4 ms-auto">
+                <p class="lead">Desenvolvedor Full-Stack com ênfase em programação Python e frameworks Django, Flask, Tkinter e Flet.<br>Integração com Banco de Dados SQL<br>Em breve mais projetos de automação, em andamento, de emails, Linkedin e Instagram.</p>
+            </div>
+            <div class="col-lg-4 me-auto">
+                <p class="lead">47 anos de idade com experiência profissional em várias áreas e setores, tornando minha vivência um ponto positivo.&nbsp;<br>Gestor de Qualidade e Agente de Mudança em Segurança da Informação.</p>
+            </div>
+        </div>
+        <div class="text-center mt-4"><a class="btn btn-outline-light btn-xl" role="button" href="https://wa.link/9erxzd"><span>Link para meu WhatsApp</span></a></div>
+    </div>
+</section>
+<section id="contact">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-secondary mb-0">CONTATO</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                    <div class="control-group">
+                        <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="text" id="name" required="" placeholder="Name"><label class="form-label">Nome</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="email" id="email" required="" placeholder="Email Address"><label class="form-label">Email</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="mb-0 form-floating controls pb-2"><input class="form-control" type="tel" id="phone" required="" placeholder="Phone Number"><label class="form-label">Telefone para contato</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="mb-5 form-floating controls pb-2"><textarea class="form-control" id="message" required="" placeholder="Message" style="height: 150px;"></textarea><label class="form-label">Mensagem:</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div id="success"></div>
+                    <div><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Enviar</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="text-center footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Localização</h4>
+                <p>VISEU - PORTUGAL<br>3510-120</p>
+            </div>
+            <div class="col-md-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase">Minhas Redes SOCIAIS</h4>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="btn btn-outline-light text-center btn-social rounded-circle" role="button" href="https://www.facebook.com/julioreis.foto"><i class="fa fa-facebook fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a class="btn btn-outline-light text-center btn-social rounded-circle" role="button" href="www.linkedin.com/in/julio-reis-dev"><i class="fa fa-linkedin-square fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a class="btn btn-outline-light text-center btn-social rounded-circle" role="button" href="https://twitter.com/julioreisfoto"><i class="fa fa-twitter fa-fw"></i></a></li>
+                    <li class="list-inline-item"><a class="btn btn-outline-light text-center btn-social rounded-circle" role="button" href="https://github.com/JulioDEVReis"><i class="fa fa-github fa-fw"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-uppercase mb-4">Contacto</h4>
+                <p class="lead mb-0"><span>+351 914 153 609<br>julio.crr@gmail.com&nbsp;</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="text-center text-white copyright py-4">
+    <div class="container"><small>Copyright ©&nbsp;JulioReis2023</small></div>
+</div>
+
+
+{% endblock content %}
